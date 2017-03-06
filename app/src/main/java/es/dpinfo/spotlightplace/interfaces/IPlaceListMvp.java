@@ -1,6 +1,5 @@
 package es.dpinfo.spotlightplace.interfaces;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import es.dpinfo.spotlightplace.adapters.PlacesAdapter;

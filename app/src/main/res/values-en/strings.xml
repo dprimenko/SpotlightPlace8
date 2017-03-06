@@ -48,7 +48,7 @@
         <item>es-ES</item>
     </string-array>
     <!-- About -->
-    <string name="about">Spotlight Place is a social app that helps it\'s users find interesting events to attend and create their own.</string>
+    <string name="about">Spotlight Place is an social app that helps it\'s users find interesting events to attend and create their own.</string>
 
     <!-- Social -->
     <string name="facebook">Like on Facebook</string>
@@ -67,4 +67,7 @@
     <string name="navigation_profile">Profile</string>
 
     <string name="connection_error">Trouble with connection. Try again later.</string>
+
+    <string name="edit_place">Edit event</string>
+    <string name="delete_place">Delete event</string>
 </resources>

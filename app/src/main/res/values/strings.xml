@@ -46,4 +46,6 @@
     <string name="user">Usuario</string>
     <string name="email">Email</string>
     <string name="connection_error">Hubo un error de conexión. Intentelo más tarde.</string>
+    <string name="edit_place">Editar evento</string>
+    <string name="delete_place">Borrar evento</string>
 </resources>

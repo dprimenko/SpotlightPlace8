@@ -1,0 +1,48 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 84934656 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2627), pid=9424, tid=0xa3adbb40
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_102-b14) (build 1.8.0_102-b14)
+# Java VM: Java HotSpot(TM) Server VM (25.102-b14 mixed mode linux-x86 )
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0xa3981800):  VMThread [stack: 0xa3a5b000,0xa3adc000] [id=9433]
+
+Stack: [0xa3a5b000,0xa3adc000],  sp=0xa3ada890,  free space=510k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x8d526f]  VMError::report_and_die()+0x16f
+V  [libjvm.so+0x38e515]  report_vm_out_of_memory(char const*, int, unsigned int, VMErrorType, char const*)+0x55
+V  [libjvm.so+0x7566b6]  os::Linux::commit_memory_impl(char*, unsigned int, bool)+0xe6
+V  [libjvm.so+0x756b88]  os::pd_commit_memory(char*, unsigned int, unsigned int, bool)+0x28
+V  [libjvm.so+0x750aac]  os::commit_memory(char*, unsigned int, unsigned int, bool)+0x2c
+V  [libjvm.so+0x7bbf98]  PSVirtualSpace::expand_by(unsigned int)+0x48
+V  [libjvm.so+0x7aeff1]  PSOldGen::expand(unsigned int)+0x141
+V  [libjvm.so+0x7af0bf]  PSOldGen::resize(unsigned int)+0x8f
+V  [libjvm.so+0x7b5c24]  PSParallelCompact::invoke_no_policy(bool)+0x874
+V  [libjvm.so+0x7ba5fd]  PSScavenge::invoke()+0x16d
+V  [libjvm.so+0x77812a]  ParallelScavengeHeap::failed_mem_allocate(unsigned int)+0x5a
+V  [libjvm.so+0x8d6d3a]  VM_ParallelGCFailedAllocation::doit()+0x7a
+V  [libjvm.so+0x8e03f7]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0x8de4d3]  VMThread::evaluate_operation(VM_Operation*)+0xb3
+V  [libjvm.so+0x8de870]  VMThread::loop()+0x1b0
+V  [libjvm.so+0x8decd5]  VMThread::run()+0x85
+V  [libjvm.so+0x758d09]  java_start(Thread*)+0x119
+C  [libpthread.so.0+0x62b5]

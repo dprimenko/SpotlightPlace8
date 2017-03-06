@@ -1,8 +1,6 @@
 package es.dpinfo.spotlightplace.presenters;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 
 import es.dpinfo.spotlightplace.interfaces.IPlaceListMvp;
 import es.dpinfo.spotlightplace.models.SpotPlace;
@@ -36,6 +34,5 @@ public class PlacesListPresenter implements IPlaceListMvp.Presenter {
         } catch (Exception e) {
             view.setMessageError(1);
         }
-
     }
 }

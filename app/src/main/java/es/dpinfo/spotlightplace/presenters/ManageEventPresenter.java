@@ -1,16 +1,16 @@
 package es.dpinfo.spotlightplace.presenters;
 
+import android.content.ContentValues;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
-import com.google.android.gms.location.places.Place;
-
-import org.w3c.dom.Text;
+import java.security.Provider;
 
 import es.dpinfo.spotlightplace.R;
+import es.dpinfo.spotlightplace.SpotlightApplication;
 import es.dpinfo.spotlightplace.interfaces.IManageEventMvp;
 import es.dpinfo.spotlightplace.models.SpotPlace;
-import es.dpinfo.spotlightplace.models.User;
+import es.dpinfo.spotlightplace.provider.SpotlightContractProvider;
 import es.dpinfo.spotlightplace.repository.ApiDAO;
 
 /**
@@ -29,7 +29,7 @@ public class ManageEventPresenter implements IManageEventMvp.Presenter {
 
         boolean result = false;
 
-        if (TextUtils.isEmpty(place.getmTitle()) || TextUtils.isEmpty(place.getmAddress())) {
+        if (TextUtils.isEmpty(place.getmTitle())) {
             view.setMessageError(R.string.data_empty);
         } else {
             result = true;
@@ -41,5 +41,19 @@ public class ManageEventPresenter implements IManageEventMvp.Presenter {
     @Override
     public void uploadPlace(Fragment fragment, SpotPlace spotPlace) {
         ApiDAO.getInstance().uploadPlace(fragment, spotPlace);
+
+        ContentValues values = new ContentValues();
+
+        values.put("creator", spotPlace.getmCreatorId());
+        values.put("title", spotPlace.getmTitle());
+        values.put("img", spotPlace.getmImg());
+        values.put("address", spotPlace.getmAddress());
+        values.put("description", spotPlace.getmDescription());
+        values.put("category", 1);
+        values.put("datetime_from", spotPlace.getmDateTimeFrom());
+        values.put("datetime_to", spotPlace.getmDateTimeTo());
+        values.put("users_in", spotPlace.getmUsersInInt());
+
+        SpotlightApplication.getContext().getContentResolver().insert(SpotlightContractProvider.Places.CONTENT_URI, values);
     }
 }

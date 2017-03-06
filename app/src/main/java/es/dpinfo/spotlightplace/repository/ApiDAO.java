@@ -3,8 +3,6 @@ package es.dpinfo.spotlightplace.repository;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,7 +24,9 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import es.dpinfo.spotlightplace.SpotlightApplication;
 import es.dpinfo.spotlightplace.adapters.PlacesRecycler;
+import es.dpinfo.spotlightplace.adapters.SimplePlacesCursorAdapter;
 import es.dpinfo.spotlightplace.models.SpotPlace;
 import es.dpinfo.spotlightplace.models.User;
 import es.dpinfo.spotlightplace.adapters.PlacesAdapter;
@@ -241,6 +241,16 @@ public class ApiDAO {
         }
 
         getAddressData(adapter.getContext(), address);
+    }
+
+    public void setAddressFormatted(SimplePlacesCursorAdapter adapter, String address) {
+        try {
+            gmapsRequestStatus = (GmapsRequestStatus) adapter;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(adapter.getClass().getName() + " must implement GmapsRequestStatus");
+        }
+
+        getAddressData(SpotlightApplication.getContext(), address);
     }
 
     public void setAddressFormatted(PlacesRecycler adapter, String address) {
